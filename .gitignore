@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 chroma_db/
 target/
+test_model.py
+docs/sample_policy.pdf
+engine/.policy_hash
