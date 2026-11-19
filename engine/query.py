@@ -11,13 +11,14 @@ import chromadb
 from chromadb.utils import embedding_functions
 import requests
 import json
+import os
 
 # Embedding the prompt and retrieving simliar policies.
 DB_PATH = Path(__file__).resolve().parent / "chroma_db"
 CORPORATION_NAME = 'Eastern Washington University'
 MODEL_USED = "qwen3.5:4b"
 COLLECTION_NAME = "compliance_docs"
-OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
 chroma_client = chromadb.PersistentClient(path = str(DB_PATH))
 EMBEDDING_MODEL = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
 chroma_collection = chroma_client.get_or_create_collection(name = COLLECTION_NAME, embedding_function= EMBEDDING_MODEL)
