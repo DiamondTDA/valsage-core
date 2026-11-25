@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from fastapi import FastAPI, status
+from fastapi import FastAPI, status, HTTPException
 import requests
 from query import audit_inquiry
 
@@ -26,5 +26,5 @@ def run_audit(request: AuditRequest):
     except requests.RequestException as exc:
         raise HTTPException(
             status_code = status.HTTP_503_SERVICE_UNAVAILABLE,
-            dtail = f"Local LLM inference service unavailable: {exc}"
+            detail = f"Local LLM inference service unavailable: {exc}"
         ) from exc

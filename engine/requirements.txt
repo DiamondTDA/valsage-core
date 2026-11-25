@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+requests
+chromadb
+sentence-transformers
+langchain-text-splitters
+pymupdf4llm
+numpy
